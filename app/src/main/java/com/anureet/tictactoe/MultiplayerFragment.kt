@@ -2,12 +2,15 @@ package com.anureet.tictactoe
 
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_multiplayer.*
 
 class MultiplayerFragment : Fragment() {
@@ -32,8 +35,12 @@ class MultiplayerFragment : Fragment() {
         listOf(3, 5, 7)
     )
 
+    private lateinit var viewModel: VictoryDetailViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        viewModel = ViewModelProvider(this).get(VictoryDetailViewModel::class.java)
 
     }
 
@@ -47,6 +54,7 @@ class MultiplayerFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         setupBoard()
     }
 
@@ -63,16 +71,16 @@ class MultiplayerFragment : Fragment() {
         )
 
         for(i in 1..3){
-            val linearLayout = LinearLayout(activity!!)
+            val linearLayout = LinearLayout(requireActivity())
             linearLayout.orientation = LinearLayout.HORIZONTAL
             linearLayout.layoutParams = params1
             params1.weight  = 1.0F
 
             for(j in 1..3){
-                val button = Button(activity!!)
+                val button = Button(requireActivity())
                 button.id = counter
                 button.textSize = 42.0F
-                button.setTextColor(ContextCompat.getColor(activity!!, R.color.colorAccent))
+                button.setTextColor(ContextCompat.getColor(requireActivity(), R.color.colorAccent))
 
                 button.layoutParams = params2
                 params2.weight = 1.0F
@@ -96,6 +104,7 @@ class MultiplayerFragment : Fragment() {
             button.text = "O"
             button.isEnabled = false
             if(checkWin(playerOneMoves)){
+                saveDetail(1)
                 showWinMessage(player_one)
             } else{
                 playerOneTurn = false
@@ -108,6 +117,7 @@ class MultiplayerFragment : Fragment() {
             button.text = "X"
             button.isEnabled = false
             if(checkWin(playerTwoMoves)){
+                saveDetail(2)
                 showWinMessage(player_two)
             } else{
                 playerOneTurn = true
@@ -116,6 +126,69 @@ class MultiplayerFragment : Fragment() {
         }
     }
 
+    private fun saveDetail(playerNum: Int) {
+        var match = false
+        var flag = 0
+
+        val playerOne = MultiplayerFragmentArgs.fromBundle(requireArguments()).Player1Name
+        val playerTwo = MultiplayerFragmentArgs.fromBundle(requireArguments()).Player2Name
+
+        var name = if(playerNum==1){
+            playerOne
+        }else{
+            playerTwo
+        }
+
+        viewModel.victory.observe(viewLifecycleOwner, Observer {
+            if(it.isNotEmpty() && flag==0){
+                flag=1
+                for(i in it.indices){
+                    if(it[i].name.toLowerCase().equals(name.toLowerCase())){
+                        match = true
+                        val victory = Victory(
+                            it[i].id,
+                            it[i].name,
+                            it[i].totalGamesPlayed+1,
+                            it[i].totalGamesWon+1
+                        )
+                        Log.d("Match", it.toString())
+                        viewModel.setVictoryId(it[i].id)
+                        viewModel.saveVictory(victory)
+                        break
+                    }
+                }
+                if(!match){
+                    viewModel.setVictoryId(0)
+                    val victory = Victory(viewModel.victoryId.value!!,name,1,1)
+                    viewModel.saveVictory(victory)
+                    Log.d("No Match", it.toString())
+                }
+            }else if(it.isEmpty() && flag==0){
+                flag=1
+                viewModel.setVictoryId(0)
+                val victory = Victory(viewModel.victoryId.value!!,name,1,1)
+                viewModel.saveVictory(victory)
+                Log.d("Empty", it.toString())
+            }
+
+        })
+//        if(match){
+//            val victory = Victory(
+//                existingRecord!!.id,
+//                existingRecord!!.name,
+//                existingRecord!!.totalGamesPlayed+1,
+//                existingRecord!!.totalGamesWon+1
+//            )
+//            viewModel.setVictoryId(existingRecord!!.id)
+//            viewModel.saveVictory(victory)
+//        }
+//        if(!match){
+//            viewModel.setVictoryId(0)
+//            val victory = Victory(viewModel.victoryId.value!!,name,1,1)
+//            viewModel.saveVictory(victory)
+//        }
+
+    }
 
 
     private fun checkWin(moves: List<Int>): Boolean{
@@ -135,10 +208,10 @@ class MultiplayerFragment : Fragment() {
 
     private fun togglePlayerTurn(playerOn: TextView, playerOff: TextView){
         playerOff.setTextColor(
-            ContextCompat.getColor(activity!!, R.color.colorPrimary))
+            ContextCompat.getColor(requireActivity(), R.color.colorPrimary))
         playerOff.setTypeface(null, Typeface.NORMAL)
         playerOn.setTextColor(
-            ContextCompat.getColor(activity!!, R.color.colorAccent))
+            ContextCompat.getColor(requireActivity(), R.color.colorAccent))
         playerOn.setTypeface(null, Typeface.BOLD)
     }
 
@@ -147,6 +220,7 @@ class MultiplayerFragment : Fragment() {
         if(playerName.isBlank()){
             playerName = player.hint.toString()
         }
+
 //        Toast.makeText(this, "Congratulations! $playerName You Won", Toast.LENGTH_SHORT).show()
 
     }

@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_main_page.*
 
 
 class MainPageFragment : Fragment() {
@@ -20,6 +22,23 @@ class MainPageFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main_page, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        startGameButton.setOnClickListener {
+            findNavController().navigate(
+                MainPageFragmentDirections.actionMainPageFragmentToPlayerDetailFragment()
+            )
+        }
+
+        leaderboardButton.setOnClickListener {
+            findNavController().navigate(
+                MainPageFragmentDirections.actionMainPageFragmentToLeaderboardFragment()
+            )
+        }
+
     }
 
 }

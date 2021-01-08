@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainPageFragment">
+
+    <fragment
+        android:id="@+id/mainPageFragment"
+        android:name="com.anureet.tictactoe.MainPageFragment"
+        android:label="fragment_main_page"
+        tools:layout="@layout/fragment_main_page" >
+        <action
+            android:id="@+id/action_mainPageFragment_to_leaderboardFragment"
+            app:destination="@id/leaderboardFragment" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_playerDetailFragment"
+            app:destination="@id/playerDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/leaderboardFragment"
+        android:name="com.anureet.tictactoe.LeaderboardFragment"
+        android:label="fragment_leaderboard"
+        tools:layout="@layout/fragment_leaderboard" />
+    <fragment
+        android:id="@+id/playerDetailFragment"
+        android:name="com.anureet.tictactoe.PlayerDetailFragment"
+        android:label="fragment_player_detail"
+        tools:layout="@layout/fragment_player_detail" >
+        <action
+            android:id="@+id/action_playerDetailFragment_to_multiplayerFragment"
+            app:destination="@id/multiplayerFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/multiplayerFragment"
+        android:name="com.anureet.tictactoe.MultiplayerFragment"
+        android:label="fragment_multiplayer"
+        tools:layout="@layout/fragment_multiplayer">
+        <argument
+            android:name="Player1Name"
+            app:argType="string" />
+        <argument
+            android:name="Player2Name"
+            app:argType="string" />
+    </fragment>
+
+</navigation>
