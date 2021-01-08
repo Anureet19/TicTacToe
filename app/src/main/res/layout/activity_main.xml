@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <fragment
-        android:name="com.anureet.tictactoe.MultiplayerFragment"
+        android:name="com.anureet.tictactoe.MainPageFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
