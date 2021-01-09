@@ -8,8 +8,8 @@ data class Player (
     @ColumnInfo(name = "name")
     var name: String,
 
-    @ColumnInfo(name = "totalGamesPlayed")
-    var totalGamesPlayed: Int,
+//    @ColumnInfo(name = "totalGamesPlayed")
+//    var totalGamesPlayed: Int,
 
     @ColumnInfo(name = "totalGamesWon")
     var totalGamesWon: Int
