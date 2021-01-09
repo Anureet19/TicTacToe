@@ -39,6 +39,7 @@
         android:layout_height="65dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/transparent_bg_button"
+        android:fontFamily="@font/artifika"
         android:text="START"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"

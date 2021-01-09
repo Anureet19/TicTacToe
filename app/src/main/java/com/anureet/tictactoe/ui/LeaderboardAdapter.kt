@@ -12,6 +12,7 @@ import com.anureet.tictactoe.data.Victory
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.list_player.*
 
+// Adapter for leaderboard recyclerview
 class LeaderboardAdapter(private val listener: (Long) -> Unit):
     ListAdapter<Victory, LeaderboardAdapter.ViewHolder>(
         DiffCallback()
@@ -55,33 +56,3 @@ class DiffCallback : DiffUtil.ItemCallback<Victory>() {
         return oldItem == newItem
     }
 }
-//    (private val children : List<Player>)
-//    : RecyclerView.Adapter<LeaderboardAdapter.ViewHolder>(){
-//
-//    override fun onCreateViewHolder(parent: ViewGroup,
-//                                    viewType: Int): ViewHolder {
-//
-//        val v =  LayoutInflater.from(parent.context)
-//            .inflate(R.layout.list_player,parent,false)
-//        return ViewHolder(v)
-//    }
-//
-//    override fun getItemCount(): Int {
-//        return children.size
-//    }
-//
-//    override fun onBindViewHolder(holder: ViewHolder,
-//                                  position: Int) {
-//        val child = children[position]
-//        holder.playerName.text = child.name
-//        holder.playerScore.text = child.totalGamesWon.toString()
-//    }
-//
-//
-//    inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-//
-//        val playerName : TextView = itemView.playerName
-//        val playerScore: TextView = itemView.playerScore
-//
-//    }
-//}

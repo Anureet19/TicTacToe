@@ -7,6 +7,7 @@ import com.anureet.tictactoe.data.Victory
 
 @Dao
 interface VictoryListDao {
-    @Query("SELECT * FROM `victory` ORDER BY totalGamesWon/totalGamesPlayed DESC")
+    // Calculating winning ratio
+    @Query("SELECT * FROM `victory` ORDER BY totalGamesWon/totalGamesPlayed DESC LIMIT 10")
     fun getPlayers(): LiveData<List<Victory>>
 }

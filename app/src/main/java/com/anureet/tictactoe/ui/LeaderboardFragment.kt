@@ -34,12 +34,15 @@ class LeaderboardFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        // Setting up recycler view
         val childLayoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
         leaderboardView.apply {
             layoutManager = childLayoutManager
             adapter = LeaderboardAdapter {}
         }
 
+        // Observing Live Data for recycler view
         viewModel.players.observe(viewLifecycleOwner, Observer {
             (leaderboardView.adapter as LeaderboardAdapter).submitList(it)
         })
