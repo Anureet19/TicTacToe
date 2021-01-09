@@ -43,6 +43,9 @@
         <argument
             android:name="Player2Name"
             app:argType="string" />
+        <action
+            android:id="@+id/action_multiplayerFragment_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
     </fragment>
 
 </navigation>
