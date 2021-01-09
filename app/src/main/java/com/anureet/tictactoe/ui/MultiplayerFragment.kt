@@ -59,6 +59,16 @@ class MultiplayerFragment : Fragment() {
 
         IncrementIfMatchFound()
 
+        val playerOne = MultiplayerFragmentArgs.fromBundle(
+            requireArguments()
+        ).Player1Name
+        val playerTwo = MultiplayerFragmentArgs.fromBundle(
+            requireArguments()
+        ).Player2Name
+
+        player_one_label.text = playerOne
+        player_two_label.text = playerTwo
+
         // Setting up board
         setupBoard()
     }
@@ -120,14 +130,17 @@ class MultiplayerFragment : Fragment() {
             linearLayout.orientation = LinearLayout.HORIZONTAL
             linearLayout.layoutParams = params1
             params1.weight  = 1.0F
+//            params1.setMargins(5,5,5,5)
 
             for(j in 1..3){
-                val button = Button(requireActivity())
+                val button = ImageButton(requireActivity())
                 button.id = counter
-                button.textSize = 42.0F
-                button.setTextColor(ContextCompat.getColor(requireActivity(),
-                    R.color.colorAccent
-                ))
+//                button.textSize = 64.0F
+//                button.setTextColor(ContextCompat.getColor(requireActivity(),
+//                    R.color.outside
+//                ))
+
+                button.setBackgroundResource(R.drawable.shadow_button)
 
                 button.layoutParams = params2
                 params2.weight = 1.0F
@@ -142,17 +155,18 @@ class MultiplayerFragment : Fragment() {
     }
 
     private fun recordMove(view: View){
-        val button = view as Button
+        val button = view as ImageButton
         val id = button.id
 
         if(playerOneTurn){
             playerOneMoves.add(id)
 
-            button.text = "O"
+//            button.text = "O"
+            button.setImageResource(R.drawable.o)
             button.isEnabled = false
             if(checkWin(playerOneMoves)){
                 saveDetail(1)
-                showWinMessage(player_one)
+//                showWinMessage(player_one)
             } else{
                 playerOneTurn = false
                 togglePlayerTurn(player_two_label, player_one_label)
@@ -161,11 +175,12 @@ class MultiplayerFragment : Fragment() {
         } else{
             playerTwoMoves.add(id)
 
-            button.text = "X"
+//            button.text = "X"
+            button.setImageResource(R.drawable.x)
             button.isEnabled = false
             if(checkWin(playerTwoMoves)){
                 saveDetail(2)
-                showWinMessage(player_two)
+//                showWinMessage(player_two)
             } else{
                 playerOneTurn = true
                 togglePlayerTurn(player_one_label, player_two_label)
@@ -255,12 +270,12 @@ class MultiplayerFragment : Fragment() {
     private fun togglePlayerTurn(playerOn: TextView, playerOff: TextView){
         playerOff.setTextColor(
             ContextCompat.getColor(requireActivity(),
-                R.color.colorPrimary
+                R.color.grey
             ))
         playerOff.setTypeface(null, Typeface.NORMAL)
         playerOn.setTextColor(
             ContextCompat.getColor(requireActivity(),
-                R.color.colorAccent
+                R.color.white
             ))
         playerOn.setTypeface(null, Typeface.BOLD)
     }

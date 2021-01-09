@@ -4,24 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MultiplayerFragment"
-    >
-
-
-    <EditText
-        android:id="@+id/player_one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/player_one_label"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:hint="player_one"
-        android:inputType="textPersonName"
-
-        android:maxLines="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/player_one_label" />
+    android:background="@color/BackgroundBrown"
+    tools:context=".ui.MultiplayerFragment">
 
     <TextView
         android:id="@+id/player_one_label"
@@ -31,47 +15,91 @@
         android:layout_alignParentLeft="true"
         android:layout_marginStart="16dp"
 
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:text="player_one_label"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/white"
+        android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/player_two_label"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/player_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/player_one_label"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:hint="player_two"
-        android:inputType="textPersonName"
-        android:maxLines="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/player_two_label" />
 
     <TextView
         android:id="@+id/player_two_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/player_two"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:text="player_two_label"
-        app:layout_constraintStart_toStartOf="@+id/player_two"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/player_one_label"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!--        <Button-->
+    <!--            android:id="@+id/button"-->
+    <!--            android:layout_width="70dp"-->
+    <!--            android:layout_height="70dp"-->
+    <!--            android:layout_marginStart="28dp"-->
+    <!--            android:layout_marginTop="10dp"-->
+    <!--            android:background="@drawable/shadow_button"-->
+    <!--            android:text="O"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/player_one_label" />-->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/button2"-->
+    <!--            android:layout_width="70dp"-->
+    <!--            android:layout_height="70dp"-->
+    <!--            android:layout_marginTop="10dp"-->
+    <!--            android:layout_marginEnd="28dp"-->
+    <!--            android:background="@drawable/shadow_button"-->
+    <!--            android:text="X"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/player_two_label" />-->
+
 
     <LinearLayout
         android:id="@+id/board"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="60dp"
+        android:background="@color/BackgroundBrown"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/player_one" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/o"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player_one_label" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/player_two_label" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

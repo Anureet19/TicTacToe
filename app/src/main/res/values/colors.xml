@@ -7,4 +7,9 @@
     <color name="BackgroundBrown">#4b4540</color>
     <color name="lightGreen">#cecd92</color>
     <color name="white">#FFFFFF</color>
+
+    <color name="grey">#A9A9A9</color>
+    <color name="inside">#4B0082</color>
+    <color name="buttonInside">#4B0082</color>
+    <color name="outsideButton">#b284be</color>
 </resources>
