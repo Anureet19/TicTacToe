@@ -57,7 +57,50 @@ class MultiplayerFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        IncrementIfMatchFound()
+
+        // Setting up board
         setupBoard()
+    }
+
+    private fun IncrementIfMatchFound() {
+        // Incrementing game count
+        var flag = 0
+
+        val playerOne = MultiplayerFragmentArgs.fromBundle(
+            requireArguments()
+        ).Player1Name
+        val playerTwo = MultiplayerFragmentArgs.fromBundle(
+            requireArguments()
+        ).Player2Name
+        viewModel.victory.observe(viewLifecycleOwner, Observer {
+            if (it.isNotEmpty() && flag == 0) {
+                flag = 1
+                for (i in it.indices) {
+                    if (it[i].name.toLowerCase().equals(playerOne.toLowerCase())) {
+                        val victory = Victory(
+                            it[i].id,
+                            it[i].name,
+                            it[i].totalGamesPlayed + 1,
+                            it[i].totalGamesWon
+                        )
+
+                        viewModel.setVictoryId(it[i].id)
+                        viewModel.saveVictory(victory)
+                    } else if (it[i].name.toLowerCase().equals(playerTwo.toLowerCase())) {
+                        val victory = Victory(
+                            it[i].id,
+                            it[i].name,
+                            it[i].totalGamesPlayed + 1,
+                            it[i].totalGamesWon
+                        )
+
+                        viewModel.setVictoryId(it[i].id)
+                        viewModel.saveVictory(victory)
+                    }
+                }
+            }
+        })
     }
 
     private fun setupBoard(){
@@ -156,7 +199,7 @@ class MultiplayerFragment : Fragment() {
                         val victory = Victory(
                             it[i].id,
                             it[i].name,
-                            it[i].totalGamesPlayed + 1,
+                            it[i].totalGamesPlayed,
                             it[i].totalGamesWon + 1
                         )
                         Log.d("Match", it.toString())
@@ -190,21 +233,6 @@ class MultiplayerFragment : Fragment() {
             }
 
         })
-//        if(match){
-//            val victory = Victory(
-//                existingRecord!!.id,
-//                existingRecord!!.name,
-//                existingRecord!!.totalGamesPlayed+1,
-//                existingRecord!!.totalGamesWon+1
-//            )
-//            viewModel.setVictoryId(existingRecord!!.id)
-//            viewModel.saveVictory(victory)
-//        }
-//        if(!match){
-//            viewModel.setVictoryId(0)
-//            val victory = Victory(viewModel.victoryId.value!!,name,1,1)
-//            viewModel.saveVictory(victory)
-//        }
 
     }
 
@@ -243,8 +271,7 @@ class MultiplayerFragment : Fragment() {
             playerName = player.hint.toString()
         }
 
-//        Toast.makeText(this, "Congratulations! $playerName You Won", Toast.LENGTH_SHORT).show()
-
     }
+
 
 }
