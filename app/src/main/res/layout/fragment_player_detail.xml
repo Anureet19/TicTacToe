@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/BackgroundBrown"
-    tools:context=".PlayerDetailFragment" >
+    tools:context=".ui.PlayerDetailFragment" >
 
     <EditText
         android:id="@+id/player1Name"

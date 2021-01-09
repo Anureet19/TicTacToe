@@ -1,4 +1,4 @@
-package com.anureet.tictactoe
+package com.anureet.tictactoe.ui
 
 
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.anureet.tictactoe.R
+import com.anureet.tictactoe.data.Victory
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.list_player.*
-import kotlinx.android.synthetic.main.list_player.view.*
-import kotlinx.android.synthetic.main.list_player.view.player_name
 
 class LeaderboardAdapter(private val listener: (Long) -> Unit):
     ListAdapter<Victory, LeaderboardAdapter.ViewHolder>(

@@ -1,7 +1,10 @@
-package com.anureet.tictactoe
+package com.anureet.tictactoe.data
 
 import android.app.Application
 import androidx.lifecycle.LiveData
+import com.anureet.tictactoe.data.Victory
+import com.anureet.tictactoe.data.VictoryDatabase
+import com.anureet.tictactoe.data.VictoryDetailDao
 
 class VictoryDetailRepository(context: Application) {
     private val victoryDetailDao: VictoryDetailDao = VictoryDatabase.getDatabase(context).victoryDetailDao()

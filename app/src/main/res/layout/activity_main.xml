@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id = "@+id/main_container"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -21,7 +21,7 @@
         app:navGraph="@navigation/navigation" />
 
 <!--    <fragment-->
-<!--        android:name="com.anureet.tictactoe.MainPageFragment"-->
+<!--        android:name="com.anureet.tictactoe.ui.MainPageFragment"-->
 <!--        android:layout_width="0dp"-->
 <!--        android:layout_height="0dp"-->
 <!--        android:layout_marginStart="16dp"-->

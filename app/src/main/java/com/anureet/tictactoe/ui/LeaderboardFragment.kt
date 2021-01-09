@@ -1,4 +1,4 @@
-package com.anureet.tictactoe
+package com.anureet.tictactoe.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.anureet.tictactoe.R
 import kotlinx.android.synthetic.main.fragment_leaderboard.*
 
 
@@ -36,7 +37,7 @@ class LeaderboardFragment : Fragment() {
         val childLayoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
         leaderboardView.apply {
             layoutManager = childLayoutManager
-            adapter = LeaderboardAdapter{}
+            adapter = LeaderboardAdapter {}
         }
 
         viewModel.players.observe(viewLifecycleOwner, Observer {

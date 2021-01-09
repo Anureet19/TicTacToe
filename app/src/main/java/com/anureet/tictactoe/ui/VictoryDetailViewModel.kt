@@ -1,11 +1,14 @@
-package com.anureet.tictactoe
+package com.anureet.tictactoe.ui
 
 import android.app.Application
 import androidx.lifecycle.*
+import com.anureet.tictactoe.data.Victory
+import com.anureet.tictactoe.data.VictoryDetailRepository
 import kotlinx.coroutines.launch
 
 class VictoryDetailViewModel(application: Application): AndroidViewModel(application) {
-    private val repo: VictoryDetailRepository = VictoryDetailRepository(application)
+    private val repo: VictoryDetailRepository =
+        VictoryDetailRepository(application)
     private val _victoryId = MutableLiveData<Long>(0)
 
     val victoryId: LiveData<Long>

@@ -1,4 +1,4 @@
-package com.anureet.tictactoe
+package com.anureet.tictactoe.ui
 
 import android.graphics.Typeface
 import android.os.Bundle
@@ -11,6 +11,8 @@ import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.anureet.tictactoe.R
+import com.anureet.tictactoe.data.Victory
 import kotlinx.android.synthetic.main.fragment_multiplayer.*
 
 class MultiplayerFragment : Fragment() {
@@ -80,7 +82,9 @@ class MultiplayerFragment : Fragment() {
                 val button = Button(requireActivity())
                 button.id = counter
                 button.textSize = 42.0F
-                button.setTextColor(ContextCompat.getColor(requireActivity(), R.color.colorAccent))
+                button.setTextColor(ContextCompat.getColor(requireActivity(),
+                    R.color.colorAccent
+                ))
 
                 button.layoutParams = params2
                 params2.weight = 1.0F
@@ -130,8 +134,12 @@ class MultiplayerFragment : Fragment() {
         var match = false
         var flag = 0
 
-        val playerOne = MultiplayerFragmentArgs.fromBundle(requireArguments()).Player1Name
-        val playerTwo = MultiplayerFragmentArgs.fromBundle(requireArguments()).Player2Name
+        val playerOne = MultiplayerFragmentArgs.fromBundle(
+            requireArguments()
+        ).Player1Name
+        val playerTwo = MultiplayerFragmentArgs.fromBundle(
+            requireArguments()
+        ).Player2Name
 
         var name = if(playerNum==1){
             playerOne
@@ -148,8 +156,8 @@ class MultiplayerFragment : Fragment() {
                         val victory = Victory(
                             it[i].id,
                             it[i].name,
-                            it[i].totalGamesPlayed+1,
-                            it[i].totalGamesWon+1
+                            it[i].totalGamesPlayed + 1,
+                            it[i].totalGamesWon + 1
                         )
                         Log.d("Match", it.toString())
                         viewModel.setVictoryId(it[i].id)
@@ -159,14 +167,24 @@ class MultiplayerFragment : Fragment() {
                 }
                 if(!match){
                     viewModel.setVictoryId(0)
-                    val victory = Victory(viewModel.victoryId.value!!,name,1,1)
+                    val victory = Victory(
+                        viewModel.victoryId.value!!,
+                        name,
+                        1,
+                        1
+                    )
                     viewModel.saveVictory(victory)
                     Log.d("No Match", it.toString())
                 }
             }else if(it.isEmpty() && flag==0){
                 flag=1
                 viewModel.setVictoryId(0)
-                val victory = Victory(viewModel.victoryId.value!!,name,1,1)
+                val victory = Victory(
+                    viewModel.victoryId.value!!,
+                    name,
+                    1,
+                    1
+                )
                 viewModel.saveVictory(victory)
                 Log.d("Empty", it.toString())
             }
@@ -208,10 +226,14 @@ class MultiplayerFragment : Fragment() {
 
     private fun togglePlayerTurn(playerOn: TextView, playerOff: TextView){
         playerOff.setTextColor(
-            ContextCompat.getColor(requireActivity(), R.color.colorPrimary))
+            ContextCompat.getColor(requireActivity(),
+                R.color.colorPrimary
+            ))
         playerOff.setTypeface(null, Typeface.NORMAL)
         playerOn.setTextColor(
-            ContextCompat.getColor(requireActivity(), R.color.colorAccent))
+            ContextCompat.getColor(requireActivity(),
+                R.color.colorAccent
+            ))
         playerOn.setTypeface(null, Typeface.BOLD)
     }
 

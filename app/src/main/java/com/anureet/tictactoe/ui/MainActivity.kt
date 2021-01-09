@@ -1,8 +1,8 @@
-package com.anureet.tictactoe
+package com.anureet.tictactoe.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.os.bundleOf
+import com.anureet.tictactoe.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

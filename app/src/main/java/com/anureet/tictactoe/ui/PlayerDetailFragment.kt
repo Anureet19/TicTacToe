@@ -1,4 +1,4 @@
-package com.anureet.tictactoe
+package com.anureet.tictactoe.ui
 
 import android.os.Bundle
 import android.text.Editable
@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.anureet.tictactoe.R
 import kotlinx.android.synthetic.main.fragment_player_detail.*
 
 class PlayerDetailFragment : Fragment() {
@@ -61,7 +61,7 @@ class PlayerDetailFragment : Fragment() {
                         beginGameButton.setOnClickListener {
                             findNavController().navigate(
                                 PlayerDetailFragmentDirections.actionPlayerDetailFragmentToMultiplayerFragment(
-                                    playerOne,playerTwo
+                                    playerOne, playerTwo
                                 )
                             )
                         }

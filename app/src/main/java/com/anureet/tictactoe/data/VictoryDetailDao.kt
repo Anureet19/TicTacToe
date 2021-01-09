@@ -1,7 +1,8 @@
-package com.anureet.tictactoe
+package com.anureet.tictactoe.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.anureet.tictactoe.data.Victory
 
 @Dao
 interface VictoryDetailDao {

@@ -1,4 +1,4 @@
-package com.anureet.tictactoe
+package com.anureet.tictactoe.data
 
 import android.content.Context
 import androidx.room.Database

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainPageFragment"
-        android:name="com.anureet.tictactoe.MainPageFragment"
+        android:name="com.anureet.tictactoe.ui.MainPageFragment"
         android:label="fragment_main_page"
         tools:layout="@layout/fragment_main_page" >
         <action
@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/leaderboardFragment"
-        android:name="com.anureet.tictactoe.LeaderboardFragment"
+        android:name="com.anureet.tictactoe.ui.LeaderboardFragment"
         android:label="fragment_leaderboard"
         tools:layout="@layout/fragment_leaderboard" />
     <fragment
         android:id="@+id/playerDetailFragment"
-        android:name="com.anureet.tictactoe.PlayerDetailFragment"
+        android:name="com.anureet.tictactoe.ui.PlayerDetailFragment"
         android:label="fragment_player_detail"
         tools:layout="@layout/fragment_player_detail" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/multiplayerFragment"
-        android:name="com.anureet.tictactoe.MultiplayerFragment"
+        android:name="com.anureet.tictactoe.ui.MultiplayerFragment"
         android:label="fragment_multiplayer"
         tools:layout="@layout/fragment_multiplayer">
         <argument
