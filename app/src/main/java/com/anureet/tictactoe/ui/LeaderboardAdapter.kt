@@ -41,7 +41,8 @@ class LeaderboardAdapter(private val listener: (Long) -> Unit):
         fun bind(player: Victory){
             with(player){
                 player_name.text = player.name
-                player_score.text = player.totalGamesWon.toString()
+                player_score.text = ""+player.totalGamesWon+"/"+player.totalGamesPlayed
+//                    ((player.totalGamesWon/player.totalGamesPlayed)*100.0).toString() + "%"
             }
         }
     }

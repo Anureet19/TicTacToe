@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.TableLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,9 +37,9 @@ class LeaderboardFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         // Setting up recycler view
-        val childLayoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
+        val layoutmanager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
         leaderboardView.apply {
-            layoutManager = childLayoutManager
+            layoutManager = layoutmanager
             adapter = LeaderboardAdapter {}
         }
 

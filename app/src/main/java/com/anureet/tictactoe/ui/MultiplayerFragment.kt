@@ -91,6 +91,8 @@ class MultiplayerFragment : Fragment() {
     private fun IncrementIfMatchFound() {
         // Incrementing game count
         var flag = 0
+        var playerOneFound = false
+        var playerTwoFound = false
 
         val playerOne = MultiplayerFragmentArgs.fromBundle(
             requireArguments()
@@ -105,6 +107,7 @@ class MultiplayerFragment : Fragment() {
                 flag = 1
                 for (i in it.indices) {
                     if (it[i].name.toLowerCase().equals(playerOne.toLowerCase())) {
+                        playerOneFound = true
                         val victory = Victory(
                             it[i].id,
                             it[i].name,
@@ -115,6 +118,7 @@ class MultiplayerFragment : Fragment() {
                         viewModel.setVictoryId(it[i].id)
                         viewModel.saveVictory(victory)
                     } else if (it[i].name.toLowerCase().equals(playerTwo.toLowerCase())) {
+                        playerTwoFound = true
                         val victory = Victory(
                             it[i].id,
                             it[i].name,
