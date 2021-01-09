@@ -7,52 +7,27 @@
     android:background="@color/BackgroundBrown"
     tools:context=".PlayerDetailFragment" >
 
-    <Button
-        android:id="@+id/multiPlayerButton"
-        android:layout_width="250dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/transparent_bg_button"
-        android:text="Multiplayer"
+    <EditText
+        android:id="@+id/player1Name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Enter Player 1 Name"
+        android:inputType="textPersonName"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/singlePlayerButton"
-        android:layout_width="250dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/transparent_bg_button"
-        android:text="Single Player"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/multiPlayerButton" />
-
-    <EditText
-        android:id="@+id/player1Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="reet"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/singlePlayerButton" />
-
     <EditText
         android:id="@+id/player2Name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Enter Player 2 Name"
         android:inputType="textPersonName"
-        android:text="aman"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +37,7 @@
         android:id="@+id/beginGameButton"
         android:layout_width="250dp"
         android:layout_height="65dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/transparent_bg_button"
         android:text="START"
         android:textColor="@color/white"
