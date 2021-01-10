@@ -21,7 +21,7 @@
         app:navGraph="@navigation/navigation" />
 
 <!--    <fragment-->
-<!--        android:name="com.anureet.tictactoe.ui.MainPageFragment"-->
+<!--        android:name="com.anureet.tictactoe.ui.SinglePlayerFragment"-->
 <!--        android:layout_width="0dp"-->
 <!--        android:layout_height="0dp"-->
 <!--        android:layout_marginStart="16dp"-->

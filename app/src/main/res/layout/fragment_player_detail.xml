@@ -7,6 +7,21 @@
     android:background="@color/BackgroundBrown"
     tools:context=".ui.PlayerDetailFragment">
 
+    <TextView
+        android:id="@+id/chooseGameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/artifika"
+        android:text="Choose Game Type"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/player1Name"
         android:layout_width="0dp"
@@ -55,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="153dp" />
+        app:layout_constraintGuide_begin="268dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -70,5 +85,30 @@
         app:layout_constraintBottom_toTopOf="@+id/player1Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseGameLabel">
+
+        <RadioButton
+            android:id="@+id/single_player_mode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/artifika"
+            android:text="Single Player"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/multiplayer_mode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/artifika"
+            android:text="Multiplayer"
+            android:textSize="18sp" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

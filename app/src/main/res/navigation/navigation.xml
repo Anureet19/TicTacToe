@@ -43,6 +43,9 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_playerDetailFragment_to_singlePlayerFragment"
+            app:destination="@id/singlePlayerFragment" />
 
     </fragment>
     <fragment
@@ -63,6 +66,19 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+    <fragment
+        android:id="@+id/singlePlayerFragment"
+        android:name="com.anureet.tictactoe.ui.SinglePlayerFragment"
+        android:label="fragment_single_player"
+        tools:layout="@layout/fragment_single_player" >
+
+        <argument
+            android:name="Player1Name"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_singlePlayerFragment_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
     </fragment>
 
 </navigation>

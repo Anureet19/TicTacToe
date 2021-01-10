@@ -1,6 +1,5 @@
 package com.anureet.tictactoe.ui
 
-import android.app.ActionBar
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.anureet.tictactoe.R
-import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.android.synthetic.main.fragment_player_detail.*
 
 class PlayerDetailFragment : Fragment() {
@@ -31,11 +29,21 @@ class PlayerDetailFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        // Radio Buttons
+        single_player_mode.setOnClickListener {
+            player2Name.visibility = View.INVISIBLE
+            validateText(1)
+        }
+        multiplayer_mode.setOnClickListener{
+            player2Name.visibility = View.VISIBLE
+            validateText(2)
+        }
+
         beginGameButton.isEnabled = false
-        validateText()
+
     }
 
-    private fun validateText(){
+    private fun validateText(i: Int) {
         val nameTextWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
             }
@@ -51,7 +59,7 @@ class PlayerDetailFragment : Fragment() {
                         player1Name.error = "Player Name cannot be empty!"
             //                    Toast.makeText(activity,"Player Name cannot be empty!",Toast.LENGTH_SHORT).show()
                     }
-                    playerTwo.isEmpty() -> {
+                    i==2 && playerTwo.isEmpty() -> {
                         beginGameButton.isEnabled = false
                         player2Name.error = "Player Name cannot be empty!"
                     }
@@ -59,20 +67,31 @@ class PlayerDetailFragment : Fragment() {
                         val playerOne = player1Name.text.toString()
                         val playerTwo = player2Name.text.toString()
                         beginGameButton.isEnabled = true
-            //                    val names: List<String> = listOf(playerOne,playerTwo)
-                        beginGameButton.setOnClickListener {
-                            findNavController().navigate(
-                                PlayerDetailFragmentDirections.actionPlayerDetailFragmentToMultiplayerFragment(
-                                    playerOne, playerTwo
+
+                        if(i==2) {
+                            beginGameButton.setOnClickListener {
+                                findNavController().navigate(
+                                    PlayerDetailFragmentDirections.actionPlayerDetailFragmentToMultiplayerFragment(
+                                        playerOne, playerTwo
+                                    )
                                 )
-                            )
+                            }
+                        }
+                        else{
+                            beginGameButton.setOnClickListener {
+                                findNavController().navigate(
+                                    PlayerDetailFragmentDirections.actionPlayerDetailFragmentToSinglePlayerFragment(
+                                        playerOne
+                                    )
+                                )
+                            }
                         }
                     }
                 }
             }
         }
         player1Name.addTextChangedListener(nameTextWatcher)
-        player2Name.addTextChangedListener(nameTextWatcher)
+        if(i==2) player2Name.addTextChangedListener(nameTextWatcher)
 
     }
 
