@@ -190,6 +190,8 @@ class MultiplayerFragment : Fragment() {
             if(checkWin(playerOneMoves)){
                 saveDetail(1)
                 showWinMessage(playerOne)
+            }else if(checkDraw()){
+                showDrawMessage()
             } else{
                 playerOneTurn = false
 
@@ -206,6 +208,8 @@ class MultiplayerFragment : Fragment() {
             if(checkWin(playerTwoMoves)){
                 saveDetail(2)
                 showWinMessage(playerTwo)
+            }else if(checkDraw()){
+                showDrawMessage()
             } else{
                 playerOneTurn = true
 
@@ -213,6 +217,37 @@ class MultiplayerFragment : Fragment() {
                 togglePlayerTurn(player_one_label, player_two_label)
             }
         }
+    }
+
+    private fun showDrawMessage() {
+        Log.d("Draw","draw")
+        val builder = AlertDialog.Builder(requireActivity())
+        builder.setTitle("Draw!")
+        builder.setMessage("This match is a draw!")
+        builder.setIcon(R.drawable.handshake)
+
+        //It will restart the existing game
+        builder.setPositiveButton("Restart Game"){dialogInterface, which ->
+            refreshFragment()
+        }
+
+        //It will navigate to the main menu
+        builder.setNegativeButton("Main Page"){dialogInterface, which ->
+            findNavController().navigate(
+                MultiplayerFragmentDirections.actionMultiplayerFragmentToMainPageFragment()
+            )
+        }
+        // Create the AlertDialog
+        val alertDialog: AlertDialog = builder.create()
+
+        // Set other dialog properties
+        alertDialog.setCancelable(false)
+        alertDialog.show()
+    }
+
+    private fun checkDraw(): Boolean {
+        val list = playerOneMoves + playerTwoMoves
+        return list.size == 9
     }
 
     // Saving detail if a new player is playing
