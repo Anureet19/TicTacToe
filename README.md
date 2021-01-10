@@ -20,6 +20,7 @@ This is an android application which is built using kotlin.
 - [x] Option to add player names
 - [x] Option to restart game on winning/draw
 - [x] Option to invite others by sending message
+- [x] Single player game 
 
 # Getting Started
 You need to have android studio installed on your device and create an Android Virtual Device to run full Android OS and test the application.
@@ -30,5 +31,6 @@ You need to have android studio installed on your device and create an Android V
 * Build the gradle file
 * Now you can test the application on either android virtual device or your android device
 
+Note - Single player game implementation is done in SinglePlayerGame Branch.
 
 Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
